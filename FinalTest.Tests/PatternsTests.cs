@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using NFluent;
 using NUnit.Framework;
 
@@ -18,16 +19,16 @@ namespace FinalTest.Tests
             Check.That(evenements).ContainsExactly(new CompteCréé(_numéroDeCompte, autorisationDeCrédit));
         }
 
-        //[Test]
-        //public void EtantDonnéUnCompteBancaireFaireUnDepotProduitUnEvenement()
-        //{
-        //    var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0)); // Event Sourcing avec un seul événement
-        //    var montantDepot = new Montant(10);
-        //    var dateDepot = DateTime.Now;
-        //    var evenements = compteBancaire.FaireUnDepot(montantDepot, dateDepot); // retourne un IEnumerable<IEvenementMetier> contenant l'événement DepotRealisé
+        [Test]
+        public void EtantDonnéUnCompteBancaireFaireUnDepotProduitUnEvenement()
+        {
+            var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0)); // Event Sourcing avec un seul événement
+            var montantDepot = new Montant(10);
+            var dateDepot = DateTime.Now;
+            var evenements = compteBancaire.FaireUnDepot(montantDepot, dateDepot); // retourne un IEnumerable<IEvenementMetier> contenant l'événement DepotRealisé
 
-        //    Check.That(evenements).ContainsExactly(new DépotRéalisé(_numéroDeCompte, montantDepot, dateDepot));
-        //}
+            Check.That(evenements).ContainsExactly(new DépotRéalisé(_numéroDeCompte, montantDepot, dateDepot));
+        }
 
         //[Test]
         //public void EtantDonnéUnCompteBancaireFaireUnRetraitAvecProvisionSuffisanteProduitUnEvenement()

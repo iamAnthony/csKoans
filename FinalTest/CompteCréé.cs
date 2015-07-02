@@ -13,5 +13,10 @@ namespace FinalTest
             _numéroDeCompte = numéroDeCompte;
             _autorisationDeCrédit = autorisationDeCrédit;
         }
+
+        public string NuméroDeCompte
+        {
+            get { return _numéroDeCompte; }
+        }
     }
 }
