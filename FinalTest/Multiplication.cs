@@ -1,6 +1,6 @@
 ﻿namespace FinalTest
 {
-    public class Multiplication
+    public class Multiplication:IOperation
     {
         public bool PeutCalculer(string p0)
         {
