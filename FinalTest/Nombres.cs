@@ -34,5 +34,17 @@ namespace FinalTest
         {
             get { return _keyValuePairs.Select(valeur => valeur.Key).First(c => c.Length > 5); }
         }
+
+        public IEnumerable<int> QuatreNombresSupérieursSuivant3
+        {
+            get
+            {
+                return
+                    _keyValuePairs.Where(valeur => valeur.Value > 3)
+                        .OrderBy(valeur => valeur.Value)
+                        .Select(valeur => valeur.Value)
+                        .Take(4);
+            }
+        }
     }
 }

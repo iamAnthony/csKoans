@@ -7,13 +7,13 @@ namespace FinalTest.Tests
     [TestFixture]
     public class LinqTests
     {
-        private IEnumerable<KeyValuePair<string, int>> keyValuePairs;
-        private IEnumerable<KeyValuePair<string, int>> otherKeyValuePairs;
+        private IEnumerable<KeyValuePair<string, int>> _keyValuePairs;
+        private IEnumerable<KeyValuePair<string, int>> _otherKeyValuePairs;
 
         [SetUp]
         public void Setup()
         {
-            keyValuePairs = new List<KeyValuePair<string, int>>()
+            _keyValuePairs = new List<KeyValuePair<string, int>>()
             {
                 new KeyValuePair<string, int>("un", 1),
                 new KeyValuePair<string, int>("sept", 7),
@@ -25,7 +25,7 @@ namespace FinalTest.Tests
                 new KeyValuePair<string, int>("six", 6),
                 new KeyValuePair<string, int>("neuf", 9)
             };
-            otherKeyValuePairs = new List<KeyValuePair<string, int>>()
+            _otherKeyValuePairs = new List<KeyValuePair<string, int>>()
             {
                 new KeyValuePair<string, int>("dix", 10),
                 new KeyValuePair<string, int>("dix-sept", 17),
@@ -42,7 +42,7 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerLesNombresPairs()
         {
-            var nombres = new Nombres(keyValuePairs);
+            var nombres = new Nombres(_keyValuePairs);
             var nombresPairs = nombres.NombresPairs; // getter seulement qui retourne un IEnumerable<int> en utilisant Linq (i.e sans utiliser de boucles) -> Where + Select
 
             Check.That(nombresPairs).ContainsExactly(4, 2, 8, 6);
@@ -51,7 +51,7 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerLesNombresPairsBis()
         {
-            var nombres = new Nombres(otherKeyValuePairs);
+            var nombres = new Nombres(_otherKeyValuePairs);
             var nombresPairs = nombres.NombresPairs; // même propriété
 
             Check.That(nombresPairs).ContainsExactly(10, 74, 28, 66, 92);
@@ -60,7 +60,7 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerUneChaîneContenantLesNombresImpairsAuFormatTextuel()
         {
-            var nombres = new Nombres(keyValuePairs);
+            var nombres = new Nombres(_keyValuePairs);
             var texteNombresImpairs = nombres.TexteNombresImpairs; // retourne une string en utilisant Linq (i.e sans utiliser de boucles) -> Aggregate + OrderBy
 
             Check.That(texteNombresImpairs).IsEqualTo("un, trois, cinq, sept, neuf");
@@ -69,7 +69,7 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerUneChaîneContenantLesNombresImpairsAuFormatTextuelBis()
         {
-            var nombres = new Nombres(otherKeyValuePairs);
+            var nombres = new Nombres(_otherKeyValuePairs);
             var texteNombresImpairs = nombres.TexteNombresImpairs;  // meme propriété
 
             Check.That(texteNombresImpairs).IsEqualTo("dix-sept, vingt-trois, cinquante et un, quatre-vingt-neuf");
@@ -78,7 +78,7 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerLePremierNombreDontLeTexteContientPlusDe5Caractères()
         {
-            var nombres = new Nombres(keyValuePairs);
+            var nombres = new Nombres(_keyValuePairs);
             var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères; // retourne une string en utilisant Linq (i.e sans utiliser de boucles) -> First
 
             Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("quatre");
@@ -88,28 +88,28 @@ namespace FinalTest.Tests
         [Test]
         public void RécupérerLePremierNombreDontLeTexteContientPlusDe5CaractèresBis()
         {
-            var nombres = new Nombres(otherKeyValuePairs);
+            var nombres = new Nombres(_otherKeyValuePairs);
             var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères;  // meme propriété
 
             Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("dix-sept");
         }
 
-        //[Test]
-        //public void RécupérerLes4NombresSupérieursA3()
-        //{
-        //    var nombres = new Nombres(keyValuePairs);
-        //    var quatreNombresSupérieursSuivant3 = nombres.QuatreNombresSupérieursSuivant3; // retourne un IEnumerable<int> en utilisant Linq (i.e sans utiliser de boucles) -> OrderBy + Skip + Take
+        [Test]
+        public void RécupérerLes4NombresSupérieursA3()
+        {
+            var nombres = new Nombres(_keyValuePairs);
+            var quatreNombresSupérieursSuivant3 = nombres.QuatreNombresSupérieursSuivant3; // retourne un IEnumerable<int> en utilisant Linq (i.e sans utiliser de boucles) -> OrderBy + Skip + Take
 
-        //    Check.That(quatreNombresSupérieursSuivant3).ContainsExactly(4, 5, 6, 7);
-        //}
+            Check.That(quatreNombresSupérieursSuivant3).ContainsExactly(4, 5, 6, 7);
+        }
 
-        //[Test]
-        //public void RécupérerLes4NombresSupérieursA3Bis()
-        //{
-        //    var nombres = new Nombres(otherKeyValuePairs);
-        //    var quatreNombresSupérieursSuivant3 = nombres.QuatreNombresSupérieursSuivant3; // meme propriété
+        [Test]
+        public void RécupérerLes4NombresSupérieursA3Bis()
+        {
+            var nombres = new Nombres(_otherKeyValuePairs);
+            var quatreNombresSupérieursSuivant3 = nombres.QuatreNombresSupérieursSuivant3; // meme propriété
 
-        //    Check.That(quatreNombresSupérieursSuivant3).ContainsExactly(10, 17, 23, 28);
-        //}
+            Check.That(quatreNombresSupérieursSuivant3).ContainsExactly(10, 17, 23, 28);
+        }
     }
 }
