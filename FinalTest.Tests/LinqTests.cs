@@ -75,24 +75,24 @@ namespace FinalTest.Tests
             Check.That(texteNombresImpairs).IsEqualTo("dix-sept, vingt-trois, cinquante et un, quatre-vingt-neuf");
         }
 
-        //[Test]
-        //public void RécupérerLePremierNombreDontLeTexteContientPlusDe5Caractères()
-        //{
-        //    var nombres = new Nombres(keyValuePairs);
-        //    var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères; // retourne une string en utilisant Linq (i.e sans utiliser de boucles) -> First
+        [Test]
+        public void RécupérerLePremierNombreDontLeTexteContientPlusDe5Caractères()
+        {
+            var nombres = new Nombres(keyValuePairs);
+            var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères; // retourne une string en utilisant Linq (i.e sans utiliser de boucles) -> First
 
-        //    Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("quatre");
-        //}
+            Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("quatre");
+        }
 
 
-        //[Test]
-        //public void RécupérerLePremierNombreDontLeTexteContientPlusDe5CaractèresBis()
-        //{
-        //    var nombres = new Nombres(otherKeyValuePairs);
-        //    var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères;  // meme propriété
+        [Test]
+        public void RécupérerLePremierNombreDontLeTexteContientPlusDe5CaractèresBis()
+        {
+            var nombres = new Nombres(otherKeyValuePairs);
+            var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères;  // meme propriété
 
-        //    Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("dix-sept");
-        //}
+            Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("dix-sept");
+        }
 
         //[Test]
         //public void RécupérerLes4NombresSupérieursA3()

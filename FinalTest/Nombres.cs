@@ -29,5 +29,10 @@ namespace FinalTest
                         .Aggregate((s, s1) => s + ", " + s1);
             }
         }
+
+        public String PremierNombreDontLeTexteContientPlusDe5Caractères
+        {
+            get { return _keyValuePairs.Select(valeur => valeur.Key).First(c => c.Length > 5); }
+        }
     }
 }
