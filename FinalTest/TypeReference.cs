@@ -2,17 +2,7 @@
 {
     public class TypeReference
     {
-        protected bool Equals(TypeReference other)
-        {
-            return _valeur == other._valeur;
-        }
-
-        public override int GetHashCode()
-        {
-            return _valeur;
-        }
-
-        private int _valeur;
+        private readonly int _valeur;
 
         public TypeReference(int i)
         {
@@ -26,5 +16,15 @@
             if (obj.GetType() != this.GetType()) return false;
             return Equals((TypeReference) obj);
         }
+
+       protected bool Equals(TypeReference other)
+       {
+           return _valeur == other._valeur;
+       }
+
+       public override int GetHashCode()
+       {
+           return _valeur;
+       }
     }
 }
